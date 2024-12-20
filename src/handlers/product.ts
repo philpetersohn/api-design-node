@@ -28,6 +28,7 @@ export const getProduct = async (req, res) => {
   res.json({ data: product })
 }
 
+// Create a product
 export const createProduct = async (req, res) => {
   const product = await prisma.product.create({
     data: {
@@ -39,6 +40,7 @@ export const createProduct = async (req, res) => {
   res.json({ data: product })
 }
 
+//update a product
 export const updateProduct = async (req, res) => {
   const updated = await prisma.product.update({
     where: {
@@ -53,6 +55,7 @@ export const updateProduct = async (req, res) => {
   res.json({ data: updated })
 }
 
+//delete a product
 export const deleteProduct = async (req, res) => {
   const deleted = await prisma.product.delete({
     where: {
