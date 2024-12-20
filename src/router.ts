@@ -8,18 +8,7 @@ const router = Router()
 
 router.get('/product', () => {})
 router.get('/product/:id', () => {})
-router.put(
-  '/product/:id',
-  body('name').isString(),
-  handleInputErrors,
-  (req, res) => {
-    const errors = validationResult(req)
-
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() })
-    }
-  }
-)
+router.put('/product/:id', body('name').isString(), handleInputErrors, () => {})
 router.post('/product', body('name').isString(), handleInputErrors, () => {})
 router.delete('/product/:id', () => {})
 
