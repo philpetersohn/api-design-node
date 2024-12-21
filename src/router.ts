@@ -1,15 +1,21 @@
 import { Router } from 'express'
-import { body, check, oneOf, validationResult } from 'express-validator'
+import { body, check, oneOf } from 'express-validator'
 import { handleInputErrors } from './modules/middleware'
+import { createProduct, getProducts } from './handlers/product'
 
 const router = Router()
 
 //Product
 
-router.get('/product', () => {})
+router.get('/product', getProducts)
 router.get('/product/:id', () => {})
 router.put('/product/:id', body('name').isString(), handleInputErrors, () => {})
-router.post('/product', body('name').isString(), handleInputErrors, () => {})
+router.post(
+  '/product',
+  body('name').isString(),
+  handleInputErrors,
+  createProduct
+)
 router.delete('/product/:id', () => {})
 
 // Update
